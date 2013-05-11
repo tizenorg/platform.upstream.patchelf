@@ -30,6 +30,7 @@ make check
 rm %{buildroot}/usr/share/doc/patchelf/README
 
 %files
+%license COPYING
 %defattr(-,root,root)
 %doc README
 /usr/bin/*
