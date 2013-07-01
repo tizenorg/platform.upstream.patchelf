@@ -6,6 +6,7 @@ Summary:        A utility for patching ELF binaries
 Url:            http://nixos.org/patchelf.html
 Group:          Development/Libraries/C and C++
 Source:         %{name}-%{version}.tar.bz2
+Source1001: 	patchelf.manifest
 BuildRequires:  gcc-c++
 # not working here
 ExcludeArch:    ppc ppc64 %arm
@@ -17,6 +18,7 @@ executables and change the RPATH of executables and libraries.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 %configure
@@ -30,6 +32,7 @@ make check
 rm %{buildroot}/usr/share/doc/patchelf/README
 
 %files
+%manifest %{name}.manifest
 %license COPYING
 %defattr(-,root,root)
 %doc README
