@@ -21,6 +21,9 @@ executables and change the RPATH of executables and libraries.
 cp %{SOURCE1001} .
 
 %build
+export CFLAGS+=" -fvisibility=hidden"
+  export CXXFLAGS+=" -fvisibility=hidden"
+  
 %configure
 make
 
