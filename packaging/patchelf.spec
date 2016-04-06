@@ -9,7 +9,7 @@ Source:         %{name}-%{version}.tar.bz2
 Source1001: 	patchelf.manifest
 BuildRequires:  gcc-c++
 # not working here
-ExcludeArch:    ppc ppc64 %arm
+ExcludeArch:    ppc ppc64
 
 %description
 PatchELF is a simple utility for modifing existing ELF executables and
@@ -25,7 +25,10 @@ cp %{SOURCE1001} .
 make
 
 %check
+%ifnarch %arm
+# fixme: x86 specific parts in checks
 make check
+%endif
 
 %install
 %make_install
